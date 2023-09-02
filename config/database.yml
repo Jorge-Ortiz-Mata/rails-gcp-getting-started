@@ -24,6 +24,9 @@ default: &default
 development:
   <<: *default
   database: sales_app_development
+  username: ENV['POSTGRES_USERNAME_DEV']
+  password: ENV['POSTGRES_PASSWORD_DEV']
+  url: <%= ENV['POSTGRES_DATABASE_URI_DEV'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
