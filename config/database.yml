@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: sales_app_development
+  database: ruby_on_rails_gcp_getting_started_development
   username: ENV['POSTGRES_USERNAME_DEV']
   password: ENV['POSTGRES_PASSWORD_DEV']
   url: <%= ENV['POSTGRES_DATABASE_URI_DEV'] %>
@@ -32,7 +32,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: sales_app
+  #username: ruby_on_rails_gcp_getting_started
 
   # The password associated with the postgres role (username).
   #password:
@@ -86,6 +86,6 @@ test:
 #
 production:
   <<: *default
-  database: sales_app_production
-  username: sales_app
-  password: <%= ENV["SALES_APP_DATABASE_PASSWORD"] %>
+  # database: ruby_on_rails_gcp_getting_started_production
+  # username: ruby_on_rails_gcp_getting_started
+  # password: <%= ENV["ruby_on_rails_gcp_getting_started_DATABASE_PASSWORD"] %>
