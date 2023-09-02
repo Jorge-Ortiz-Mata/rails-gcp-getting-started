@@ -1,0 +1,15 @@
+name: 'CI & CD - Staging'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  testing:
+    name: Run Specs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Something
+        run: echo 'Hello World'
