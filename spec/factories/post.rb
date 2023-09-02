@@ -2,6 +2,8 @@
 
 FactoryBot.define do
   factory :post do
-    name { 'My first post' }
+    trait :with_name do
+      name { 'My first post' }
+    end
   end
 end
