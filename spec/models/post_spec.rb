@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:post_one) { Post.new(name: 'My First post') }
-  let(:post_two) { Post.new(name: 'My Second post') }
+  let(:post_one) { build(:post) }
+  let(:post_two) { build(:post, name: 'My other post') }
 
   it 'should be valid' do
     expect(post_one).to be_valid
