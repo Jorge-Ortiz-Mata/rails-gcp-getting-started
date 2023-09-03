@@ -10,6 +10,8 @@ jobs:
   testing:
     name: Run Specs
     runs-on: ubuntu-latest
+    container:
+      image: ruby:3.0.4
     env:
       POSTGRES_USERNAME_TEST: ${{ secrets.POSTGRES_USERNAME_TEST }}
       POSTGRES_PASSWORD_TEST: ${{ secrets.POSTGRES_PASSWORD_TEST }}
