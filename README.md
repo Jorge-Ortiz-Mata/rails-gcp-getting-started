@@ -11,3 +11,8 @@ POSTGRES_DATABASE_URI_DEV=''
 POSTGRES_USERNAME_TEST=''
 POSTGRES_PASSWORD_TEST=''
 POSTGRES_DATABASE_URI_TEST=''
+
+## GitHub Actions
+
+Add your secrets on the repository configuration.
+

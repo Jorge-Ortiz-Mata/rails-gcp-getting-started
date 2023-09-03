@@ -10,6 +10,17 @@ jobs:
   testing:
     name: Run Specs
     runs-on: ubuntu-latest
+    env:
+      POSTGRES_USERNAME_TEST: ${{ secrets.POSTGRES_USERNAME_TEST }}
+      POSTGRES_PASSWORD_TEST: ${{ secrets.POSTGRES_PASSWORD_TEST }}
+      POSTGRES_DATABASE_URI_TEST: ${{ secrets.POSTGRES_DATABASE_URI_TEST }}
+
     steps:
-      - name: Say Something
-        run: echo 'Hello World'
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Install Ruby Gems
+        run: bundle install
+
+      - name: Runs Specs
+        run: rspec spec
