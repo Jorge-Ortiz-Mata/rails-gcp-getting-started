@@ -31,9 +31,8 @@ EXPOSE 3000
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
 ENV RAILS_LOG_TO_STDOUT true
-ENV SECRET_KEY_BASE=10167c7f7654ed02b3557b05b88ece
 # Test if the rails app loads:
-RUN rails db:migrate
+ENV SECRET_KEY_BASE=10167c7f7654ed02b3557b05b88ece
 
 # Configure the main process to run when running the image
 CMD ["rails", "server", "-b", "0.0.0.0"]

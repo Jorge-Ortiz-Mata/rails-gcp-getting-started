@@ -137,7 +137,10 @@ In order to use GH Actions to upload the project to the Google Cloud Platform se
 
 2. Update the staging workfload with all the project information (ID, service account, workload_identity_pool)
 
-3. Update the folder name for the Artifact Registry
+3. Create the folder name for the Artifact Registry on GCP and update the name on the gh action workflow
+
+- Name: rails-gcp-getting-started
+- Region: us-central1
 
 4. Update the Cloud Run step with the information of your project
 
