@@ -66,7 +66,9 @@ Follow the next configuration to create your environments on GCP.
 
 4. Enable the Secret Manager service.
 
-5. Create a new role (Container Deployer) to use the Cloud Run services:
+5. Enable the Cloud Run API service.
+
+6. Create a new role (Container Deployer) to use the Cloud Run services:
 
 - iam.serviceAccounts.actAs
 - run.services.create
@@ -76,22 +78,22 @@ Follow the next configuration to create your environments on GCP.
 - run.services.setIamPolicy
 - run.services.update
 
-6. Create a new role (Docker image publisher) to store the Docker image on the Artifact Registry service:
+7. Create a new role (Docker image publisher) to store the Docker image on the Artifact Registry service:
 
 - artifactregistry.repositories.downloadArtifacts
 - artifactregistry.repositories.uploadArtifacts
 
-7. Create a new role (Secret accessor) to get access to the Secret Manager service:
+8. Create a new role (Secret accessor) to get access to the Secret Manager service:
 
 - secretmanager.versions.access
 
-8. Create a service account and assing the three roles we created in the previous steps.
+9. Create a service account and assing the three roles we created in the previous steps.
 
 - Name: gh-actions-runner
 
-9. In the IAM section, we need to add permissions to our service account created. We select the service account and we add the three roles created before.
+10. In the IAM section, we need to add permissions to our service account created. We select the service account and we add the three roles created before.
 
-10. Go to Workload Identity Pools and create a new workload identity pool
+11. Go to Workload Identity Pools and create a new workload identity pool
 
 - Name: ruby-on-rails-gcp-pool
 - Provider: OpenID Connect (OIDC)
@@ -106,11 +108,11 @@ Follow the next configuration to create your environments on GCP.
   attribute.repository_owner - assertion.repository_owner
 ```
 
-11. Login with gcloud from the terminal: `gcloud auth login`.
+12. Login with gcloud from the terminal: `gcloud auth login`.
 
-12. Select the project: `gcloud config set project x-alcove-397919`
+13. Select the project: `gcloud config set project x-alcove-397919`
 
-13. Copy this command in your terminal and change the configuration with your workload pool created and the service account
+14. Copy this command in your terminal and change the configuration with your workload pool created and the service account
 
 ```
 gcloud iam service-accounts add-iam-policy-binding "my-service-account@${PROJECT_ID}.iam.gserviceaccount.com" \
@@ -127,7 +129,6 @@ gcloud iam service-accounts add-iam-policy-binding "gh-actions-runner@x-alcove-3
   --role="roles/iam.workloadIdentityUser" \
   --member="principalSet://iam.googleapis.com/projects/31953380355/locations/global/workloadIdentityPools/ruby-on-rails-gcp-pool/attribute.repository/Jorge-Ortiz-Mata/rails-gcp-getting-started"
 ```
-
 
 ## GH Actions with Google Cloud Platform
 
