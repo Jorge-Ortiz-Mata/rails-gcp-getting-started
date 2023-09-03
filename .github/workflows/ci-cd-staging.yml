@@ -84,7 +84,6 @@ jobs:
           region: us-central1
           service: staging
           image: us-central1-docker.pkg.dev/x-alcove-397919/rails-gcp-getting-started/rails-gcp-getting-started:staging
-          port: 3000
           secrets: |
             RAILS_MASTER_KEY=rails-master-key:latest
             POSTGRES_USERNAME=projects/31953380355/secrets/db-username-staging:latest
@@ -94,3 +93,4 @@ jobs:
             --allow-unauthenticated
             --service-account gh-actions-runner@x-alcove-397919.iam.gserviceaccount.com
             --min-instances=1
+            --port=3000
