@@ -24,9 +24,9 @@ default: &default
 development:
   <<: *default
   database: ruby_on_rails_gcp_getting_started_development
-  username: ENV['POSTGRES_USERNAME_DEV']
-  password: ENV['POSTGRES_PASSWORD_DEV']
-  url: <%= ENV['POSTGRES_DATABASE_URI_DEV'] %>
+  username: ENV['POSTGRES_USERNAME']
+  password: ENV['POSTGRES_PASSWORD']
+  url: <%= ENV['POSTGRES_DATABASE_URI'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
