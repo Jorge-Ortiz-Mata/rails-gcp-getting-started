@@ -69,28 +69,15 @@ jobs:
       - name: Push Docker Image to Artifact Registry
         run: docker push us-central1-docker.pkg.dev/x-alcove-397919/rails-gcp-getting-started/rails-gcp-getting-started:staging
 
-      # - name: Deploy service to Cloud Run
-      #   run: |
-      #     gcloud run deploy yorch-financial-staging \
-      #     --image us-central1-docker.pkg.dev/x-alcove-397919/rails-gcp-getting-started/rails-gcp-getting-started:staging \
-      #     --allow-unauthenticated \
-      #     --port 3000 \
-      #     --region us-central1 \
-      #     --min-instances 1
-
-      - name: Deploy to Cloud Run
-        uses: google-github-actions/deploy-cloudrun@v0.9.0
-        with:
-          region: us-central1
-          service: staging
-          image: us-central1-docker.pkg.dev/x-alcove-397919/rails-gcp-getting-started/rails-gcp-getting-started:staging
-          secrets: |
-            RAILS_MASTER_KEY=rails-master-key:latest
-            POSTGRES_USERNAME=projects/31953380355/secrets/db-username-staging:latest
-            POSTGRES_PASSWORD=projects/31953380355/secrets/db-password-staging:latest
-            POSTGRES_DATABASE_URI=projects/31953380355/secrets/db-uri-staging:latest
-          flags: |-
-            --allow-unauthenticated
-            --service-account gh-actions-runner@x-alcove-397919.iam.gserviceaccount.com
-            --min-instances=1
-            --port=3000
+      - name: Deploy service to Cloud Run
+        run: |
+          gcloud run deploy staging \
+          --image us-central1-docker.pkg.dev/x-alcove-397919/rails-gcp-getting-started/rails-gcp-getting-started:staging \
+          --allow-unauthenticated \
+          --port 3000 \
+          --region us-central1 \
+          --min-instances 1 \
+          --update-secrets=RAILS_MASTER_KEY=rails-master-key:latest \
+          --update-secrets=POSTGRES_USERNAME=db-username-staging:latest \
+          --update-secrets=POSTGRES_PASSWORD=db-password-staging:latest \
+          --update-secrets=POSTGRES_DATABASE_URI=db-uri-staging:latest
